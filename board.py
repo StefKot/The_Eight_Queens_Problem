@@ -3,13 +3,13 @@ import numpy as np
 from utils import PIECES, COLOR_SCHEME
 
 class Board():
-    def __init__(self, size, mode=1, cell_length=100):   #задаёт значения резмера шахматной доски
+    def __init__(self, size, mode=1, cell_length=100):   # задаёт значения резмера шахматной доски
         self.size = size
         self.cell_length = cell_length
         self.mode = mode
         self.create()
 
-    def create(self):   #создаёт n x n шахматную доску на основе значений её размера
+    def create(self):   # создаёт n x n шахматную доску на основе значений её размера
         get_row = lambda size, shift: [{"type": (cell_index + shift) % 2, "piece": None} for cell_index in range(size)]
         self.board = [get_row(self.size, _ % 2) for _ in range(self.size)]
 
@@ -25,12 +25,12 @@ class Board():
 
         self.panel = cv2.cvtColor(self.panel, cv2.COLOR_BGR2BGRA)
 
-    def put(self, piece: str, cell: tuple) -> bool:   #ставит фигуру в нужную ячейку на шахматной доске; tuple это Координаты области на двухмерной шахматной доске, где нужно разместить фигуру; bool - задаём статус операции put как логический
+    def put(self, piece: str, cell: tuple) -> bool:   # ставит фигуру в нужную ячейку на шахматной доске; tuple это Координаты области на двухмерной шахматной доске, где нужно разместить фигуру; bool - задаём статус операции put как логический
         row, column = cell
         self.board[row][column]['piece'] = piece
         return True
 
-    def draw(self):    #рисует и показываем доску на изображении
+    def draw(self):    # рисует и показываем доску на изображении
         for row_index, row in enumerate(self.board):
             for column_index, column in enumerate(row):
                 if not column['piece']:
