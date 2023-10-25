@@ -6,3 +6,4 @@
         pip install opencv-python
     Linux:
         sudo apt install opencv-python
+[More information](https://github.com/StefKot/The_Eight_Queens_Problem.wiki.git)
